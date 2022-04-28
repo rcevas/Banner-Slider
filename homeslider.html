@@ -1,0 +1,501 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+
+    <style>
+      .biblio-carousel-title-primary {
+        color: var(--primary);
+        font-size: var(--h3-font-size);
+        font-weight: var(--font-weight-semi-bold);
+      }
+
+      .biblio-carousel-p {
+        color: #6d6d6d;
+        font-size: var(--font-size-base);
+        font-weight: var(--font-weight-semi-bold);
+      }
+
+      .biblio-carousel-container {
+        width: 100%;
+        max-height: 300px;
+        justify-content: center;
+        align-items: center;
+      }
+
+      .biblio-carousel {
+        position: relative;
+        width: 100%;
+        padding-top: 300px;
+        overflow: hidden;
+      }
+
+      .biblio-carousel-container img {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+      }
+
+      .biblio-carousel-left-arrow {
+        position: absolute;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        top: 0;
+        left: 0;
+        height: 100%;
+        width: 100px;
+        cursor: pointer;
+      }
+
+      .biblio-carousel-left-arrow:hover {
+        background: linear-gradient(
+          to left,
+          rgba(0, 0, 0, 0),
+          rgba(0, 0, 0, 0.3)
+        );
+      }
+
+      .biblio-carousel-left-arrow:hover .biblio-carousel-chevron,
+      .biblio-carousel-right-arrow:hover .biblio-carousel-chevron {
+        border-color: #e6e6e6;
+      }
+
+      .biblio-carousel-right-arrow {
+        position: absolute;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        top: 0;
+        right: 0;
+        height: 100%;
+        width: 100px;
+        cursor: pointer;
+      }
+
+      .biblio-carousel-right-arrow:hover {
+        background: linear-gradient(
+          to right,
+          rgba(0, 0, 0, 0),
+          rgba(0, 0, 0, 0.3)
+        );
+      }
+
+      .biblio-carousel-chevron {
+        width: 15px;
+        height: 15px;
+        border: solid rgba(255, 255, 255, 0.5);
+        border-width: 5px 5px 0 0;
+      }
+
+      .biblio-carousel-chevron.biblio-carousel-right {
+        transform: rotate(45deg);
+      }
+
+      .biblio-carousel-chevron.biblio-carousel-left {
+        transform: rotate(-135deg);
+      }
+
+      .biblio-carousel-circle-container {
+        position: absolute;
+        display: flex;
+        justify-content: center;
+        align-items: start;
+        bottom: 0;
+        left: 0;
+        width: 100%;
+        height: 45px;
+      }
+
+      .biblio-carousel-circle {
+        border: 1px solid white;
+        width: 12px;
+        height: 12px;
+        border-radius: 50%;
+        margin: 0 5px;
+        cursor: pointer;
+      }
+
+      .biblio-carousel-circle-fill {
+        background-color: white;
+      }
+
+      .biblio-carousel-text-container {
+        position: absolute;
+        display: flex;
+        flex-direction: column;
+        justify-content: start;
+        align-items: flex-start;
+        bottom: 45px;
+        left: 0;
+        max-width: 500px;
+        padding: 10px 100px;
+      }
+
+      .biblio-carousel-screen {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+      }
+
+      /* Animations */
+      @keyframes toRight {
+        0% {
+          left: 0;
+        }
+        100% {
+          left: 100%;
+        }
+      }
+
+      @keyframes toLeft {
+        0% {
+          left: 0;
+        }
+        100% {
+          left: -100%;
+        }
+      }
+
+      @keyframes comeRight {
+        0% {
+          left: 100%;
+        }
+        100% {
+          left: 0;
+        }
+      }
+
+      @keyframes comeLeft {
+        0% {
+          left: -100%;
+        }
+        100% {
+          left: 0;
+        }
+      }
+
+      /* Media query */
+      @media screen and (max-width: 500px) {
+        .biblio-carousel-title-primary {
+          font-size: var(--h5-font-size);
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="biblio-carousel-container">
+      <div auto-scroll="7000" class="biblio-carousel" id="carousel-1">
+        <section class="biblio-carousel-screen">
+          <img alt="xxx" src="https://dummyimage.com/1300x300/000/fff" />
+          <section class="biblio-carousel-text-container">
+            <label class="biblio-carousel-title-primary"
+              >Lorem Ipsum Amet 1</label
+            >
+            <p class="biblio-carousel-p mb-4">
+              Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit
+              aut fugit, sed quia consequuntur magni 1
+            </p>
+
+            <p>
+              <a class="biblio-btn-primary" href="#" role="button"
+                >Ver catálogo 1</a
+              >
+            </p>
+          </section>
+        </section>
+
+        <section class="biblio-carousel-screen">
+          <img alt="xxx" src="https://dummyimage.com/1300x300/000/fff" />
+          <section class="biblio-carousel-text-container">
+            <label class="biblio-carousel-title-primary"
+              >Lorem Ipsum Amet 2</label
+            >
+
+            <p class="biblio-carousel-p mb-4">
+              Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit
+              aut fugit, sed quia consequuntur magni 2
+            </p>
+
+            <p>
+              <a class="biblio-btn-primary" href="#" role="button"
+                >Ver catálogo 2</a
+              >
+            </p>
+          </section>
+        </section>
+
+        <section class="biblio-carousel-circle-container">
+          <div class="biblio-carousel-circle"> </div>
+
+          <div class="biblio-carousel-circle"> </div>
+        </section>
+
+        <div class="biblio-carousel-left-arrow">
+          <span class="biblio-carousel-chevron biblio-carousel-left"></span>
+        </div>
+
+        <div class="biblio-carousel-right-arrow">
+          <span class="biblio-carousel-chevron biblio-carousel-right"></span>
+        </div>
+      </div>
+    </div>
+
+    <script>
+      let rightArrow = document.querySelector(
+        "#carousel-1 .biblio-carousel-right-arrow"
+      );
+      let leftArrow = document.querySelector(
+        "#carousel-1 .biblio-carousel-left-arrow"
+      );
+
+      let screenStore = document.querySelectorAll(
+        "#carousel-1 .biblio-carousel-screen"
+      );
+      let numOfScreens = screenStore.length;
+
+      let circleStore = document.querySelectorAll(
+        "#carousel-1 .biblio-carousel-circle-container .biblio-carousel-circle"
+      );
+
+      let currentScreen = 0;
+
+      let inAnim = false;
+
+      let animTime = 500;
+
+      sortPositioning(
+        screenStore[currentScreen],
+        screenStore[currentScreen - 1],
+        screenStore[currentScreen + 1]
+      );
+
+      highlightCircle(circleStore[0]);
+
+      rightArrow.addEventListener("click", () => {
+        startAnim("right");
+      });
+
+      leftArrow.addEventListener("click", () => {
+        startAnim("left");
+      });
+
+      function startAnim(direction) {
+        if (!inAnim) {
+          inAnim = true;
+          if (direction === "right") {
+            moveRight();
+            highlightCircle(circleStore[currentScreen + 1], "right");
+          } else if (direction === "left") {
+            moveLeft();
+            highlightCircle(circleStore[currentScreen - 1], "left");
+          } else {
+            isAnim = false;
+            return;
+          }
+        }
+      }
+
+      function moveRight() {
+        if (currentScreen < numOfScreens - 1) {
+          toLeft(screenStore[currentScreen]);
+          comeRight(screenStore[currentScreen + 1]);
+          setTimeout(() => {
+            inAnim = false;
+            currentScreen++;
+            sortPositioning(
+              screenStore[currentScreen],
+              screenStore[currentScreen - 1],
+              screenStore[currentScreen + 1]
+            );
+          }, animTime);
+        } else {
+          toLeft(screenStore[currentScreen]);
+          comeRight(screenStore[0]);
+          setTimeout(() => {
+            inAnim = false;
+            currentScreen = 0;
+            sortPositioning(
+              screenStore[currentScreen],
+              screenStore[currentScreen - 1],
+              screenStore[currentScreen + 1]
+            );
+          }, animTime);
+        }
+      }
+
+      function moveLeft() {
+        if (currentScreen > 0) {
+          toRight(screenStore[currentScreen]);
+          comeLeft(screenStore[currentScreen - 1]);
+          setTimeout(() => {
+            inAnim = false;
+            currentScreen--;
+            sortPositioning(
+              screenStore[currentScreen],
+              screenStore[currentScreen - 1],
+              screenStore[currentScreen + 1]
+            );
+          }, animTime);
+        } else {
+          toRight(screenStore[currentScreen]);
+          comeLeft(screenStore[numOfScreens - 1]);
+          setTimeout(() => {
+            inAnim = false;
+            currentScreen = numOfScreens - 1;
+            sortPositioning(
+              screenStore[currentScreen],
+              screenStore[currentScreen - 1],
+              screenStore[currentScreen + 1]
+            );
+          }, animTime);
+        }
+      }
+
+      circleStore.forEach((circle) => {
+        circle.addEventListener("click", (event) => {
+          if (!inAnim) {
+            let circleStoreArray = Array.prototype.slice.call(circleStore);
+            let circleIndex = circleStoreArray.indexOf(event.target);
+
+            highlightCircle(event.target);
+
+            if (circleIndex > currentScreen) {
+              changeScreenCircleClick(circleIndex, "right");
+            } else if (circleIndex < currentScreen) {
+              changeScreenCircleClick(circleIndex, "left");
+            }
+          }
+        });
+      });
+
+      function changeScreenCircleClick(circleIndex, direction) {
+        inAnim = true;
+        if (direction === "right") {
+          sortPositioning(
+            screenStore[currentScreen],
+            screenStore[currentScreen - 1],
+            screenStore[circleIndex]
+          );
+          toLeft(screenStore[currentScreen]);
+          comeRight(screenStore[circleIndex]);
+        } else if (direction === "left") {
+          sortPositioning(
+            screenStore[currentScreen],
+            screenStore[circleIndex],
+            screenStore[currentScreen + 1]
+          );
+          toRight(screenStore[currentScreen]);
+          comeLeft(screenStore[circleIndex]);
+        } else {
+          inAnim = false;
+          return;
+        }
+        setTimeout(() => {
+          inAnim = false;
+          currentScreen = circleIndex;
+          sortPositioning(
+            screenStore[currentScreen],
+            screenStore[currentScreen - 1],
+            screenStore[currentScreen + 1]
+          );
+        }, animTime);
+      }
+
+      function highlightCircle(circleSelect, direction) {
+        if (circleSelect === undefined && direction === "right") {
+          circleSelect = circleStore[0];
+        } else if (circleSelect === undefined && direction === "left") {
+          circleSelect = circleStore[numOfScreens - 1];
+        }
+        circleStore.forEach((circle) => {
+          if (circle === circleSelect) {
+            circle.classList.add("biblio-carousel-circle-fill");
+          } else {
+            circle.classList.remove("biblio-carousel-circle-fill");
+          }
+        });
+      }
+
+      //Animation methods
+      function toLeft(screen) {
+        screen.style.animation = "toLeft 0.5s ease-in-out forwards";
+        setTimeout(() => {
+          screen.style.animation = "";
+        }, animTime);
+      }
+
+      function toRight(screen) {
+        screen.style.animation = "toRight 0.5s ease-in-out forwards";
+        setTimeout(() => {
+          screen.style.animation = "";
+        }, animTime);
+      }
+
+      function comeRight(screen) {
+        screen.style.animation = "comeRight 0.5s ease-in-out forwards";
+        setTimeout(() => {
+          screen.style.animation = "";
+        }, animTime);
+      }
+
+      function comeLeft(screen) {
+        screen.style.animation = "comeLeft 0.5s ease-in-out forwards";
+        setTimeout(() => {
+          screen.style.animation = "";
+        }, animTime);
+      }
+
+      function sortPositioning(mainScreen, leftScreen, rightScreen) {
+        if (rightScreen === undefined) {
+          rightScreen = screenStore[0];
+        }
+
+        if (leftScreen === undefined) {
+          leftScreen = screenStore[numOfScreens - 1];
+        }
+        screenStore.forEach((screen) => {
+          if (screen === mainScreen) {
+            screen.style.display = "block";
+            screen.style.left = "0px";
+          } else if (screen === leftScreen) {
+            screen.style.display = "block";
+            screen.style.left = "-100%";
+          } else if (screen === rightScreen) {
+            screen.style.display = "block";
+            screen.style.left = "100%";
+          } else {
+            screen.style.display = "none";
+          }
+        });
+      }
+
+      //Auto Scroll feature
+      let carousel = document.getElementById("carousel-1");
+      let scrollTime = Number(carousel.getAttribute("auto-scroll"));
+
+      if (scrollTime) {
+        let autoWipe = setInterval(() => {
+          startAnim("right");
+        }, scrollTime);
+
+        carousel.addEventListener("mouseenter", () => {
+          clearInterval(autoWipe);
+        });
+
+        carousel.addEventListener("mouseleave", () => {
+          autoWipe = setInterval(() => {
+            startAnim("right");
+          }, scrollTime);
+        });
+      }
+    </script>
+  </body>
+</html>
